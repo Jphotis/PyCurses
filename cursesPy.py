@@ -7,14 +7,16 @@ screen = curses.initscr()
 
 
 
-val = 50
+val = 500
 ran = range(val)
-for j in ran:
-	for i in ran:
-		screen.addstr(i% 30 + j, j % 30, "This string gets printed at position (0, 0)")
+
+while 1:
+	for j in ran:
+		for i in ran:
+			screen.addstr((i% 30 + j) % 43, j % 100, "This string gets printed at position (0, 0)")
 	
-	screen.refresh()
-	curses.napms(50)		
+		screen.refresh()
+		curses.napms(50)		
 
 
 # Displays screen
