@@ -7,3 +7,5 @@ about to see!
 
 The main file to run is "pyCurses.py".
 All of the other files are extra.
+
+Also, I would love to hear any ideas on what I could add to this.
