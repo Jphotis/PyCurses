@@ -42,7 +42,7 @@ curses.init_pair(9, curses.COLOR_RED, curses.COLOR_BLACK)
 # Adds stuff to the screen
 val = 500
 ran = range(val)
-
+unicodeVals = []
 while 1:
 	for j in ran:
 		for i in ran:
@@ -69,10 +69,24 @@ while 1:
 						None
 
 
+			# Doing some unicode magic. Indents are as intended.
+			unicodeVals.append(chr(random.randrange(1,100000)))
+		if not j % 5:
+			lst = unicodeVals
+			unicodeVals = "".join(lst)
+			try:
+				stdscr.addstr(unicodeVals, curses.color_pair(random.randrange(1,9)))
+			except:
+				None
+			unicodeVals = []
+
+		# Reprints the screen and waits 50 milliseconds.
 		stdscr.refresh()
 		curses.napms(50)		
 
-
+	# Clears the screen
+	stdscr.clear()
+	stdscr.refresh()
 
 # Displays screen every time this command is run
 stdscr.refresh()
