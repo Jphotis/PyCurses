@@ -70,7 +70,8 @@ while 1:
 
 
 			# Doing some unicode magic. Indents are as intended.
-			unicodeVals.append(chr(random.randrange(1,100000)))
+			if not i % 7:
+				unicodeVals.append(chr(random.randrange(1,100000)))
 		if not j % 5:
 			lst = unicodeVals
 			unicodeVals = "".join(lst)
