@@ -46,14 +46,28 @@ ran = range(val)
 while 1:
 	for j in ran:
 		for i in ran:
-			stdscr.addstr((i% 30 + j) % 43, j % 100, "This string gets printed at position (0, 0)")
+			# The try statements prevent the program from crashing when something tries to get printed off screen.
+			try:	
+				stdscr.addstr((i% 30 + j) % 43, j % 100, "This string gets printed at position (0, 0)")
+			except:
+				None
 			
 			if not i % 20:
-				stdscr.move(random.randrange(0,40), random.randrange(0,100))
-				stdscr.addstr("#", curses.color_pair(9))
-		
+				try:
+					# Sets the color of the next text that will appear on the screen and where.
+					stdscr.move(random.randrange(0,40), random.randrange(0,150))
+				except:
+					None
+				try:
+					stdscr.addstr("#", curses.color_pair(9))
+				except:
+					None
 				if not i % 100:
-					stdscr.addstr("Hello, world!", curses.color_pair(random.randrange(1,9)))
+					try:
+						stdscr.addstr("Hello, world!", curses.color_pair(random.randrange(1,9)))
+					except:
+						None
+
 
 		stdscr.refresh()
 		curses.napms(50)		
